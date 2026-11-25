@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/interface.gd" id="1"]
+
+[sub_resource type="StyleBoxFlat" id="Card"]
+bg_color = Color(0.12, 0.19, 0.17, 0.98)
+border_width_top = 3
+border_color = Color(0.84, 0.71, 0.43, 1)
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 7
+
+[node name="Overlay" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="PauseCenter" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="PauseCenter"]
+custom_minimum_size = Vector2(386, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("Card")
+
+[node name="Inset" type="MarginContainer" parent="PauseCenter/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 29
+theme_override_constants/margin_top = 23
+theme_override_constants/margin_right = 29
+theme_override_constants/margin_bottom = 23
+
+[node name="Options" type="VBoxContainer" parent="PauseCenter/Panel/Inset"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Region" type="Label" parent="PauseCenter/Panel/Inset/Options"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.78, 0.56, 1)
+theme_override_font_sizes/font_size = 13
+text = "МОСКВА   /   RED SQUARE"
+
+[node name="Title" type="Label" parent="PauseCenter/Panel/Inset/Options"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Paused"
+
+[node name="Resume" type="Button" parent="PauseCenter/Panel/Inset/Options"]
+custom_minimum_size = Vector2(0, 39)
+layout_mode = 2
+text = "Resume walk"
+
+[node name="Map" type="Button" parent="PauseCenter/Panel/Inset/Options"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+text = "Open map"
+
+[node name="Return" type="Button" parent="PauseCenter/Panel/Inset/Options"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+text = "Return to starting point"
+
+[node name="Sound" type="CheckButton" parent="PauseCenter/Panel/Inset/Options"]
+layout_mode = 2
+button_pressed = true
+text = "Ambient sound and footsteps"
+
+[node name="Quit" type="Button" parent="PauseCenter/Panel/Inset/Options"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+text = "Quit game"

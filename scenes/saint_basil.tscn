@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/landmark.gd" id="R1"]
+[ext_resource type="PackedScene" path="res://art/architecture/saint_basil.glb" id="R2"]
+
+[sub_resource type="BoxShape3D" id="Box23p5_7p9_19p5"]
+size = Vector3(23.5, 7.9, 19.5)
+
+[sub_resource type="BoxShape3D" id="Box0p38_4p2_3p33"]
+size = Vector3(0.38, 4.2, 3.33)
+
+[sub_resource type="ConvexPolygonShape3D" id="PorchRamp"]
+points = PackedVector3Array(-7.4, -0.02, 14.67, -7.4, 0.26, 14.67, -7.4, -0.02, 10.74, -7.4, 2.78, 10.74, -4.1, -0.02, 14.67, -4.1, 0.26, 14.67, -4.1, -0.02, 10.74, -4.1, 2.78, 10.74)
+
+[node name="SaintBasilsCathedral" type="Node3D" groups=["landmarks"]]
+script = ExtResource("R1")
+title = "Saint Basil’s Cathedral"
+map_number = 1
+footprint = Vector2(24, 21)
+name_distance = 10
+
+[node name="Architecture" parent="." instance=ExtResource("R2")]
+
+[node name="Solids" type="StaticBody3D" parent="."]
+
+[node name="Footprint1" type="CollisionShape3D" parent="Solids"]
+position = Vector3(0, 3.95, 0)
+shape = SubResource("Box23p5_7p9_19p5")
+
+[node name="Footprint2" type="CollisionShape3D" parent="Solids"]
+position = Vector3(-7.65, 2.1, 11.3)
+shape = SubResource("Box0p38_4p2_3p33")
+
+[node name="Footprint3" type="CollisionShape3D" parent="Solids"]
+position = Vector3(-3.85, 2.1, 11.3)
+shape = SubResource("Box0p38_4p2_3p33")
+
+[node name="EntryStair" type="CollisionShape3D" parent="Solids"]
+shape = SubResource("PorchRamp")

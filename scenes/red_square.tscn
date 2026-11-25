@@ -1,0 +1,803 @@
+[gd_scene load_steps=44 format=3]
+
+[ext_resource type="Script" path="res://scripts/square.gd" id="R1"]
+[ext_resource type="Texture2D" path="res://art/terrain/afternoon_sky.jpg" id="R2"]
+[ext_resource type="Material" path="res://art/terrain/granite.tres" id="R3"]
+[ext_resource type="PackedScene" path="res://scenes/saint_basil.tscn" id="R4"]
+[ext_resource type="PackedScene" path="res://scenes/clock_tower.tscn" id="R5"]
+[ext_resource type="PackedScene" path="res://scenes/gum.tscn" id="R6"]
+[ext_resource type="PackedScene" path="res://scenes/museum.tscn" id="R7"]
+[ext_resource type="PackedScene" path="res://scenes/mausoleum.tscn" id="R8"]
+[ext_resource type="PackedScene" path="res://scenes/kremlin_wall.tscn" id="R9"]
+[ext_resource type="PackedScene" path="res://scenes/lamp.tscn" id="R10"]
+[ext_resource type="PackedScene" path="res://scenes/bench.tscn" id="R11"]
+[ext_resource type="PackedScene" path="res://scenes/spruce.tscn" id="R12"]
+[ext_resource type="PackedScene" path="res://scenes/linden.tscn" id="R13"]
+[ext_resource type="PackedScene" path="res://scenes/railing.tscn" id="R14"]
+[ext_resource type="PackedScene" path="res://art/architecture/backstreet.glb" id="R15"]
+[ext_resource type="PackedScene" path="res://art/architecture/small_tower.glb" id="R16"]
+[ext_resource type="PackedScene" path="res://art/props/spruce.glb" id="R17"]
+[ext_resource type="PackedScene" path="res://art/props/linden.glb" id="R18"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="R19"]
+[ext_resource type="AudioStream" path="res://audio/square_air.wav" id="R20"]
+[ext_resource type="PackedScene" path="res://scenes/interface.tscn" id="R21"]
+
+[sub_resource type="PanoramaSkyMaterial" id="AfternoonPanorama"]
+panorama = ExtResource("R2")
+
+[sub_resource type="Sky" id="Sky"]
+sky_material = SubResource("AfternoonPanorama")
+
+[sub_resource type="Environment" id="Afternoon"]
+background_mode = 2
+sky = SubResource("Sky")
+ambient_light_source = 2
+ambient_light_color = Color(0.91373, 0.93333, 0.94902, 1)
+ambient_light_sky_contribution = 0.15
+ambient_light_energy = 0.80
+reflected_light_source = 1
+tonemap_mode = 0
+fog_enabled = true
+fog_light_color = Color(0.76078, 0.78824, 0.77255, 1)
+fog_light_energy = 0.95
+fog_sun_scatter = 0.08
+fog_density = 0.00140
+fog_sky_affect = 0.03
+
+[sub_resource type="PlaneMesh" id="PavingMesh"]
+material = ExtResource("R3")
+size = Vector2(352, 352)
+
+[sub_resource type="BoxShape3D" id="Box352_1_352"]
+size = Vector3(352, 1, 352)
+
+[sub_resource type="StandardMaterial3D" id="Finisha59785"]
+albedo_color = Color(0.64706, 0.59216, 0.52157, 1)
+roughness = 0.94
+
+[sub_resource type="BoxMesh" id="SurfaceGraniteSeam0"]
+material = SubResource("Finisha59785")
+size = Vector3(0.14, 0.022, 128)
+
+[sub_resource type="BoxMesh" id="SurfaceGraniteSeam1"]
+material = SubResource("Finisha59785")
+size = Vector3(0.14, 0.022, 128)
+
+[sub_resource type="BoxMesh" id="SurfaceGraniteSeam2"]
+material = SubResource("Finisha59785")
+size = Vector3(0.14, 0.022, 128)
+
+[sub_resource type="BoxMesh" id="SurfaceGraniteSeam3"]
+material = SubResource("Finisha59785")
+size = Vector3(0.14, 0.022, 128)
+
+[sub_resource type="StandardMaterial3D" id="Finishb4a28a"]
+albedo_color = Color(0.70588, 0.63529, 0.54118, 1)
+roughness = 0.94
+
+[sub_resource type="BoxMesh" id="SurfaceGardenKerb0"]
+material = SubResource("Finishb4a28a")
+size = Vector3(12.16, 0.09, 24.46)
+
+[sub_resource type="StandardMaterial3D" id="Finish85936e"]
+albedo_color = Color(0.52157, 0.57647, 0.43137, 1)
+roughness = 0.94
+
+[sub_resource type="BoxMesh" id="SurfaceGarden0"]
+material = SubResource("Finish85936e")
+size = Vector3(11.7, 0.078, 24)
+
+[sub_resource type="BoxMesh" id="SurfaceGardenKerb1"]
+material = SubResource("Finishb4a28a")
+size = Vector3(8.56, 0.09, 18.66)
+
+[sub_resource type="BoxMesh" id="SurfaceGarden1"]
+material = SubResource("Finish85936e")
+size = Vector3(8.1, 0.078, 18.2)
+
+[sub_resource type="BoxMesh" id="SurfaceGardenKerb2"]
+material = SubResource("Finishb4a28a")
+size = Vector3(6.86, 0.09, 39.46)
+
+[sub_resource type="BoxMesh" id="SurfaceGarden2"]
+material = SubResource("Finish85936e")
+size = Vector3(6.4, 0.078, 39)
+
+[sub_resource type="BoxMesh" id="SurfaceGardenKerb3"]
+material = SubResource("Finishb4a28a")
+size = Vector3(5.06, 0.09, 28.46)
+
+[sub_resource type="BoxMesh" id="SurfaceGarden3"]
+material = SubResource("Finish85936e")
+size = Vector3(4.6, 0.078, 28)
+
+[sub_resource type="BoxMesh" id="SurfaceGardenKerb4"]
+material = SubResource("Finishb4a28a")
+size = Vector3(9.46, 0.09, 19.46)
+
+[sub_resource type="BoxMesh" id="SurfaceGarden4"]
+material = SubResource("Finish85936e")
+size = Vector3(9, 0.078, 19)
+
+[node name="RedSquare" type="Node3D"]
+script = ExtResource("R1")
+
+[node name="Afternoon" type="WorldEnvironment" parent="."]
+environment = SubResource("Afternoon")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-43, -36, 0)
+light_color = Color(1.00000, 0.94118, 0.84314, 1)
+light_energy = 1.02
+light_angular_distance = 0.5
+shadow_enabled = true
+shadow_bias = 0.055
+directional_shadow_max_distance = 142.0
+
+[node name="Paving" type="StaticBody3D" parent="."]
+
+[node name="Setts" type="MeshInstance3D" parent="Paving"]
+mesh = SubResource("PavingMesh")
+
+[node name="Ground" type="CollisionShape3D" parent="Paving"]
+position = Vector3(0, -0.5, 0)
+shape = SubResource("Box352_1_352")
+
+[node name="Landmarks" type="Node3D" parent="."]
+
+[node name="SaintBasilsCathedral" parent="Landmarks" instance=ExtResource("R4")]
+position = Vector3(-6, 0, -70)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="SpasskayaTower" parent="Landmarks" instance=ExtResource("R5")]
+position = Vector3(38, 0, -43)
+rotation_degrees = Vector3(0, -90, 0)
+
+[node name="GUM" parent="Landmarks" instance=ExtResource("R6")]
+position = Vector3(-46, 0, 10)
+rotation_degrees = Vector3(0, 90, 0)
+
+[node name="HistoricalMuseum" parent="Landmarks" instance=ExtResource("R7")]
+position = Vector3(0, 0, 88)
+rotation_degrees = Vector3(0, 180, 0)
+
+[node name="Mausoleum" parent="Landmarks" instance=ExtResource("R8")]
+position = Vector3(31.5, 0, 17)
+rotation_degrees = Vector3(0, -90, 0)
+
+[node name="KremlinWall" parent="Landmarks" instance=ExtResource("R9")]
+position = Vector3(42, 0, 0)
+rotation_degrees = Vector3(0, -90, 0)
+
+[node name="Streetscape" type="Node3D" parent="."]
+
+[node name="GraniteSeam0" type="MeshInstance3D" parent="Streetscape"]
+position = Vector3(-37.6, 0.013, 10)
+mesh = SubResource("SurfaceGraniteSeam0")
+
+[node name="GraniteSeam1" type="MeshInstance3D" parent="Streetscape"]
+position = Vector3(-37.12, 0.013, 10)
+mesh = SubResource("SurfaceGraniteSeam1")
+
+[node name="GraniteSeam2" type="MeshInstance3D" parent="Streetscape"]
+position = Vector3(26.52, 0.013, 10)
+mesh = SubResource("SurfaceGraniteSeam2")
+
+[node name="GraniteSeam3" type="MeshInstance3D" parent="Streetscape"]
+position = Vector3(26.93, 0.013, 10)
+mesh = SubResource("SurfaceGraniteSeam3")
+
+[node name="GardenKerb0" type="MeshInstance3D" parent="Streetscape"]
+position = Vector3(-27, 0.045, -73)
+mesh = SubResource("SurfaceGardenKerb0")
+
+[node name="Garden0" type="MeshInstance3D" parent="Streetscape"]
+position = Vector3(-27, 0.067, -73)
+mesh = SubResource("SurfaceGarden0")
+
+[node name="GardenKerb1" type="MeshInstance3D" parent="Streetscape"]
+position = Vector3(14.8, 0.045, -78)
+mesh = SubResource("SurfaceGardenKerb1")
+
+[node name="Garden1" type="MeshInstance3D" parent="Streetscape"]
+position = Vector3(14.8, 0.067, -78)
+mesh = SubResource("SurfaceGarden1")
+
+[node name="GardenKerb2" type="MeshInstance3D" parent="Streetscape"]
+position = Vector3(35.7, 0.045, 54)
+mesh = SubResource("SurfaceGardenKerb2")
+
+[node name="Garden2" type="MeshInstance3D" parent="Streetscape"]
+position = Vector3(35.7, 0.067, 54)
+mesh = SubResource("SurfaceGarden2")
+
+[node name="GardenKerb3" type="MeshInstance3D" parent="Streetscape"]
+position = Vector3(36.7, 0.045, -13)
+mesh = SubResource("SurfaceGardenKerb3")
+
+[node name="Garden3" type="MeshInstance3D" parent="Streetscape"]
+position = Vector3(36.7, 0.067, -13)
+mesh = SubResource("SurfaceGarden3")
+
+[node name="GardenKerb4" type="MeshInstance3D" parent="Streetscape"]
+position = Vector3(-31, 0.045, 84)
+mesh = SubResource("SurfaceGardenKerb4")
+
+[node name="Garden4" type="MeshInstance3D" parent="Streetscape"]
+position = Vector3(-31, 0.067, 84)
+mesh = SubResource("SurfaceGarden4")
+
+[node name="GalleryLamp1" parent="Streetscape" instance=ExtResource("R10")]
+position = Vector3(-35.6, 0, -58)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="GalleryLamp2" parent="Streetscape" instance=ExtResource("R10")]
+position = Vector3(-35.6, 0, -35)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="GalleryLamp3" parent="Streetscape" instance=ExtResource("R10")]
+position = Vector3(-35.6, 0, -10)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="GalleryLamp4" parent="Streetscape" instance=ExtResource("R10")]
+position = Vector3(-35.6, 0, 16)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="GalleryLamp5" parent="Streetscape" instance=ExtResource("R10")]
+position = Vector3(-35.6, 0, 42)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="GalleryLamp6" parent="Streetscape" instance=ExtResource("R10")]
+position = Vector3(-35.6, 0, 67)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="GalleryLamp7" parent="Streetscape" instance=ExtResource("R10")]
+position = Vector3(-21, 0, 82)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="WallLamp1" parent="Streetscape" instance=ExtResource("R10")]
+position = Vector3(24, 0, -68)
+rotation_degrees = Vector3(0, 2, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="WallLamp2" parent="Streetscape" instance=ExtResource("R10")]
+position = Vector3(24, 0, -37)
+rotation_degrees = Vector3(0, 2, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="WallLamp3" parent="Streetscape" instance=ExtResource("R10")]
+position = Vector3(24, 0, -6)
+rotation_degrees = Vector3(0, 2, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="WallLamp4" parent="Streetscape" instance=ExtResource("R10")]
+position = Vector3(24, 0, 40)
+rotation_degrees = Vector3(0, 2, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="WallLamp5" parent="Streetscape" instance=ExtResource("R10")]
+position = Vector3(24, 0, 66)
+rotation_degrees = Vector3(0, 2, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="WallLamp6" parent="Streetscape" instance=ExtResource("R10")]
+position = Vector3(20.5, 0, 83)
+rotation_degrees = Vector3(0, 2, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Bench1" parent="Streetscape" instance=ExtResource("R11")]
+position = Vector3(-24, 0, -62)
+rotation_degrees = Vector3(0, -90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Bench2" parent="Streetscape" instance=ExtResource("R11")]
+position = Vector3(-24, 0, -72)
+rotation_degrees = Vector3(0, -90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Bench3" parent="Streetscape" instance=ExtResource("R11")]
+position = Vector3(9.2, 0, -76)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Bench4" parent="Streetscape" instance=ExtResource("R11")]
+position = Vector3(24, 0, 55)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Bench5" parent="Streetscape" instance=ExtResource("R11")]
+position = Vector3(-23, 0, 78)
+rotation_degrees = Vector3(0, -90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Bench6" parent="Streetscape" instance=ExtResource("R11")]
+position = Vector3(-36, 0, -6)
+rotation_degrees = Vector3(0, -90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Spruce1" parent="Streetscape" instance=ExtResource("R12")]
+position = Vector3(36, 0, 43)
+rotation_degrees = Vector3(0, 250, 0)
+scale = Vector3(0.87329, 0.87329, 0.87329)
+
+[node name="Spruce2" parent="Streetscape" instance=ExtResource("R12")]
+position = Vector3(36, 0, 53)
+rotation_degrees = Vector3(0, 149, 0)
+scale = Vector3(1.06619, 1.06619, 1.06619)
+
+[node name="Spruce3" parent="Streetscape" instance=ExtResource("R12")]
+position = Vector3(36, 0, 65)
+rotation_degrees = Vector3(0, 91, 0)
+scale = Vector3(1.06284, 1.06284, 1.06284)
+
+[node name="Spruce4" parent="Streetscape" instance=ExtResource("R12")]
+position = Vector3(36, 0, -22)
+rotation_degrees = Vector3(0, 348, 0)
+scale = Vector3(1.02174, 1.02174, 1.02174)
+
+[node name="Spruce5" parent="Streetscape" instance=ExtResource("R12")]
+position = Vector3(36, 0, -13)
+rotation_degrees = Vector3(0, 17, 0)
+scale = Vector3(0.89995, 0.89995, 0.89995)
+
+[node name="Spruce6" parent="Streetscape" instance=ExtResource("R12")]
+position = Vector3(11, 0, -83)
+rotation_degrees = Vector3(0, 298, 0)
+scale = Vector3(0.9397, 0.9397, 0.9397)
+
+[node name="Spruce7" parent="Streetscape" instance=ExtResource("R12")]
+position = Vector3(17, 0, -79)
+rotation_degrees = Vector3(0, 101, 0)
+scale = Vector3(1.03308, 1.03308, 1.03308)
+
+[node name="Spruce8" parent="Streetscape" instance=ExtResource("R12")]
+position = Vector3(-30, 0, 87)
+rotation_degrees = Vector3(0, 69, 0)
+scale = Vector3(0.91065, 0.91065, 0.91065)
+
+[node name="Linden1" parent="Streetscape" instance=ExtResource("R13")]
+position = Vector3(-29, 0, -65)
+rotation_degrees = Vector3(0, 43, 0)
+scale = Vector3(0.79598, 0.79598, 0.79598)
+
+[node name="Linden2" parent="Streetscape" instance=ExtResource("R13")]
+position = Vector3(-29, 0, -74)
+rotation_degrees = Vector3(0, 178, 0)
+scale = Vector3(0.98231, 0.98231, 0.98231)
+
+[node name="Linden3" parent="Streetscape" instance=ExtResource("R13")]
+position = Vector3(-26, 0, -82)
+rotation_degrees = Vector3(0, 44, 0)
+scale = Vector3(1.03565, 1.03565, 1.03565)
+
+[node name="Linden4" parent="Streetscape" instance=ExtResource("R13")]
+position = Vector3(-31, 0, 81)
+rotation_degrees = Vector3(0, 92, 0)
+scale = Vector3(0.92933, 0.92933, 0.92933)
+
+[node name="Linden5" parent="Streetscape" instance=ExtResource("R13")]
+position = Vector3(15, 0, -75)
+rotation_degrees = Vector3(0, 123, 0)
+scale = Vector3(1.05985, 1.05985, 1.05985)
+
+[node name="Linden6" parent="Streetscape" instance=ExtResource("R13")]
+position = Vector3(-21, 0, -93)
+rotation_degrees = Vector3(0, 155, 0)
+scale = Vector3(0.88217, 0.88217, 0.88217)
+
+[node name="Linden7" parent="Streetscape" instance=ExtResource("R13")]
+position = Vector3(-36, 0, -90)
+rotation_degrees = Vector3(0, 188, 0)
+scale = Vector3(0.75996, 0.75996, 0.75996)
+
+[node name="SquareBoundary" type="Node3D" parent="."]
+
+[node name="Rail1" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-44, 0, -102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail2" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-38, 0, -102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail3" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-32, 0, -102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail4" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-26, 0, -102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail5" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-20, 0, -102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail6" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-14, 0, -102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail7" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-8, 0, -102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail8" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-2, 0, -102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail9" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(4, 0, -102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail10" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(10, 0, -102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail11" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(16, 0, -102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail12" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(22, 0, -102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail13" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(28, 0, -102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail14" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(34, 0, -102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail15" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(40, 0, -102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail16" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-44, 0, 102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail17" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-38, 0, 102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail18" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-32, 0, 102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail19" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-26, 0, 102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail20" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-20, 0, 102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail21" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-14, 0, 102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail22" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-8, 0, 102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail23" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-2, 0, 102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail24" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(4, 0, 102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail25" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(10, 0, 102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail26" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(16, 0, 102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail27" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(22, 0, 102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail28" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(28, 0, 102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail29" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(34, 0, 102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail30" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(40, 0, 102)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail31" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-47, 0, -99)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail32" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-47, 0, -93)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail33" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-47, 0, -87)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail34" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-47, 0, -81)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail35" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-47, 0, -75)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail36" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-47, 0, -69)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail37" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-47, 0, -63)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail38" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-47, 0, -57)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail39" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-47, 0, 75)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail40" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-47, 0, 81)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail41" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-47, 0, 87)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail42" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-47, 0, 93)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail43" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(-47, 0, 99)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail44" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(43, 0, -99)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Rail45" parent="SquareBoundary" instance=ExtResource("R14")]
+position = Vector3(43, 0, 99)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1, 1, 1)
+
+[node name="Skyline" type="Node3D" parent="."]
+
+[node name="Townhouses1" parent="Skyline" instance=ExtResource("R15")]
+position = Vector3(-22, 0, -126)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.95, 1.05, 1)
+
+[node name="Townhouses2" parent="Skyline" instance=ExtResource("R15")]
+position = Vector3(57, 0, -137)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1, 1.54, 1)
+
+[node name="Townhouses3" parent="Skyline" instance=ExtResource("R15")]
+position = Vector3(-76, 0, -66)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1.05, 1.09, 1)
+
+[node name="Townhouses4" parent="Skyline" instance=ExtResource("R15")]
+position = Vector3(-75, 0, 27)
+rotation_degrees = Vector3(0, 90, 0)
+scale = Vector3(1.11, 1.32, 1)
+
+[node name="Townhouses5" parent="Skyline" instance=ExtResource("R15")]
+position = Vector3(-86, 0, 121)
+rotation_degrees = Vector3(0, 155, 0)
+scale = Vector3(1.15, 1.32, 1)
+
+[node name="Townhouses6" parent="Skyline" instance=ExtResource("R15")]
+position = Vector3(19, 0, 129)
+rotation_degrees = Vector3(0, 180, 0)
+scale = Vector3(1.25, 1.35, 1)
+
+[node name="Townhouses7" parent="Skyline" instance=ExtResource("R15")]
+position = Vector3(84, 0, 43)
+rotation_degrees = Vector3(0, -90, 0)
+scale = Vector3(1.05, 1.28, 1)
+
+[node name="Townhouses8" parent="Skyline" instance=ExtResource("R15")]
+position = Vector3(85, 0, -53)
+rotation_degrees = Vector3(0, -90, 0)
+scale = Vector3(1.12, 1.6, 1)
+
+[node name="RoofTower1" parent="Skyline" instance=ExtResource("R16")]
+position = Vector3(42, 0, 69)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.85, 0.85, 0.85)
+
+[node name="RoofTower2" parent="Skyline" instance=ExtResource("R16")]
+position = Vector3(43, 0, -93)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(0.7, 0.7, 0.7)
+
+[node name="RoofTower3" parent="Skyline" instance=ExtResource("R16")]
+position = Vector3(74, 0, 19)
+rotation_degrees = Vector3(0, 0, 0)
+scale = Vector3(1.06, 1.06, 1.06)
+
+[node name="FarTree1" parent="Skyline" instance=ExtResource("R17")]
+position = Vector3(54.04216, 0, -94)
+rotation_degrees = Vector3(0, 225, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree2" parent="Skyline" instance=ExtResource("R18")]
+position = Vector3(52.74456, 0, -78.7)
+rotation_degrees = Vector3(0, 148, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree3" parent="Skyline" instance=ExtResource("R18")]
+position = Vector3(54.81746, 0, -63.4)
+rotation_degrees = Vector3(0, 338, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree4" parent="Skyline" instance=ExtResource("R17")]
+position = Vector3(51.2775, 0, -48.1)
+rotation_degrees = Vector3(0, 181, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree5" parent="Skyline" instance=ExtResource("R18")]
+position = Vector3(51.69073, 0, -32.8)
+rotation_degrees = Vector3(0, 353, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree6" parent="Skyline" instance=ExtResource("R18")]
+position = Vector3(57.67258, 0, -17.5)
+rotation_degrees = Vector3(0, 152, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree7" parent="Skyline" instance=ExtResource("R17")]
+position = Vector3(49.41158, 0, -2.2)
+rotation_degrees = Vector3(0, 2, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree8" parent="Skyline" instance=ExtResource("R18")]
+position = Vector3(52.20567, 0, 13.1)
+rotation_degrees = Vector3(0, 348, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree9" parent="Skyline" instance=ExtResource("R18")]
+position = Vector3(49.64903, 0, 28.4)
+rotation_degrees = Vector3(0, 357, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree10" parent="Skyline" instance=ExtResource("R17")]
+position = Vector3(57.5184, 0, 43.7)
+rotation_degrees = Vector3(0, 172, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree11" parent="Skyline" instance=ExtResource("R18")]
+position = Vector3(57.97979, 0, 59)
+rotation_degrees = Vector3(0, 206, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree12" parent="Skyline" instance=ExtResource("R18")]
+position = Vector3(57.24352, 0, 74.3)
+rotation_degrees = Vector3(0, 317, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree13" parent="Skyline" instance=ExtResource("R17")]
+position = Vector3(52.71807, 0, 89.6)
+rotation_degrees = Vector3(0, 1, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree14" parent="Skyline" instance=ExtResource("R18")]
+position = Vector3(-57.4076, 0, -94)
+rotation_degrees = Vector3(0, 287, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree15" parent="Skyline" instance=ExtResource("R18")]
+position = Vector3(-61.4348, 0, -78.7)
+rotation_degrees = Vector3(0, 343, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree16" parent="Skyline" instance=ExtResource("R17")]
+position = Vector3(-61.29231, 0, -63.4)
+rotation_degrees = Vector3(0, 47, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree17" parent="Skyline" instance=ExtResource("R18")]
+position = Vector3(-60.61348, 0, -48.1)
+rotation_degrees = Vector3(0, 235, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree18" parent="Skyline" instance=ExtResource("R18")]
+position = Vector3(-58.41816, 0, -32.8)
+rotation_degrees = Vector3(0, 12, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree19" parent="Skyline" instance=ExtResource("R17")]
+position = Vector3(-55.79745, 0, -17.5)
+rotation_degrees = Vector3(0, 208, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree20" parent="Skyline" instance=ExtResource("R18")]
+position = Vector3(-60.84051, 0, -2.2)
+rotation_degrees = Vector3(0, 259, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="FarTree21" parent="Skyline" instance=ExtResource("R18")]
+position = Vector3(-58.86966, 0, 13.1)
+rotation_degrees = Vector3(0, 174, 0)
+scale = Vector3(1.35, 1.45, 1.35)
+
+[node name="Spawn" type="Marker3D" parent="."]
+position = Vector3(-14, 0.1, 0)
+rotation_degrees = Vector3(0, -11, 0)
+
+[node name="Player" parent="." instance=ExtResource("R19")]
+position = Vector3(-14, 0.1, 0)
+rotation_degrees = Vector3(0, -11, 0)
+
+[node name="SquareAir" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("R20")
+volume_db = -10.0
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="Overlay" parent="Interface" instance=ExtResource("R21")]

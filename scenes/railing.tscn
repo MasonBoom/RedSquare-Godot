@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://art/props/railing.glb" id="R1"]
+
+[sub_resource type="BoxShape3D" id="Box6_1p3_0p42"]
+size = Vector3(6, 1.3, 0.42)
+
+[node name="Railing" type="StaticBody3D"]
+
+[node name="Model" parent="." instance=ExtResource("R1")]
+
+[node name="Ironwork" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.65, 0)
+shape = SubResource("Box6_1p3_0p42")

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/landmark.gd" id="R1"]
+[ext_resource type="PackedScene" path="res://art/architecture/mausoleum.glb" id="R2"]
+
+[sub_resource type="BoxShape3D" id="Box16p8_0p9_10p7"]
+size = Vector3(16.8, 0.9, 10.7)
+
+[sub_resource type="BoxShape3D" id="Box14p25_2p7_8p6"]
+size = Vector3(14.25, 2.7, 8.6)
+
+[sub_resource type="BoxShape3D" id="Box10_3p5_6p55"]
+size = Vector3(10, 3.5, 6.55)
+
+[node name="Mausoleum" type="Node3D" groups=["landmarks"]]
+script = ExtResource("R1")
+title = "Lenin’s Mausoleum"
+map_number = 5
+footprint = Vector2(16.8, 10.7)
+name_distance = 7
+
+[node name="Architecture" parent="." instance=ExtResource("R2")]
+
+[node name="Solids" type="StaticBody3D" parent="."]
+
+[node name="Footprint1" type="CollisionShape3D" parent="Solids"]
+position = Vector3(0, 0.45, 0)
+shape = SubResource("Box16p8_0p9_10p7")
+
+[node name="Footprint2" type="CollisionShape3D" parent="Solids"]
+position = Vector3(0, 1.4, -0.2)
+shape = SubResource("Box14p25_2p7_8p6")
+
+[node name="Footprint3" type="CollisionShape3D" parent="Solids"]
+position = Vector3(0, 3, -0.64)
+shape = SubResource("Box10_3p5_6p55")

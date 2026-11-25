@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/landmark.gd" id="R1"]
+[ext_resource type="PackedScene" path="res://art/architecture/museum.glb" id="R2"]
+
+[sub_resource type="BoxShape3D" id="Box34_12_13p2"]
+size = Vector3(34, 12, 13.2)
+
+[sub_resource type="BoxShape3D" id="Box10p35_12_11p14"]
+size = Vector3(10.35, 12, 11.14)
+
+[node name="HistoricalMuseum" type="Node3D" groups=["landmarks"]]
+script = ExtResource("R1")
+title = "State Historical Museum"
+map_number = 4
+footprint = Vector2(34, 14.5)
+name_distance = 9
+
+[node name="Architecture" parent="." instance=ExtResource("R2")]
+
+[node name="Solids" type="StaticBody3D" parent="."]
+
+[node name="Footprint1" type="CollisionShape3D" parent="Solids"]
+position = Vector3(0, 6, 0)
+shape = SubResource("Box34_12_13p2")
+
+[node name="Footprint2" type="CollisionShape3D" parent="Solids"]
+position = Vector3(0, 6, 1.55)
+shape = SubResource("Box10p35_12_11p14")

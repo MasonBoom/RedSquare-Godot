@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/landmark.gd" id="R1"]
+[ext_resource type="PackedScene" path="res://art/architecture/gum.glb" id="R2"]
+
+[sub_resource type="BoxShape3D" id="Box125_14_10p9"]
+size = Vector3(125, 14, 10.9)
+
+[sub_resource type="BoxShape3D" id="Box7p85_12_10p75"]
+size = Vector3(7.85, 12, 10.75)
+
+[node name="GUM" type="Node3D" groups=["landmarks"]]
+script = ExtResource("R1")
+title = "GUM"
+map_number = 3
+footprint = Vector2(125.2, 11)
+name_distance = 8
+
+[node name="Architecture" parent="." instance=ExtResource("R2")]
+
+[node name="Solids" type="StaticBody3D" parent="."]
+
+[node name="Footprint1" type="CollisionShape3D" parent="Solids"]
+position = Vector3(0, 7, 0)
+shape = SubResource("Box125_14_10p9")
+
+[node name="Footprint2" type="CollisionShape3D" parent="Solids"]
+position = Vector3(-54.6, 6, 0.98)
+shape = SubResource("Box7p85_12_10p75")
+
+[node name="Footprint3" type="CollisionShape3D" parent="Solids"]
+position = Vector3(0, 6, 0.98)
+shape = SubResource("Box7p85_12_10p75")
+
+[node name="Footprint4" type="CollisionShape3D" parent="Solids"]
+position = Vector3(54.6, 6, 0.98)
+shape = SubResource("Box7p85_12_10p75")
